@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Golden Hour Bone Broth</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,400..600&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#221d19;
+    --ink-soft:#5a5148;
+    --paper:#e9e2d3;
+    --paper-2:#f6f1e6;
+    --amber:#c07a2e;
+    --amber-deep:#8a5322;
+    --steel:#454b50;
+    --rule:#d4cab6;
+
+    --lid-blue:#93b3c2;
+    --lid-green:#9fbb98;
+    --lid-yellow:#e3c473;
+    --lid-lilac:#c2a3c6;
+    --lid-white:#d8d1c0;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Work Sans", sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%;display:block;}
+  .wrap{max-width:760px;margin:0 auto;padding:0 24px;}
+
+  a{color:var(--amber-deep);}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    min-height:78vh;
+    display:flex;
+    align-items:flex-end;
+    background:#161210;
+    overflow:hidden;
+  }
+  .hero img{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    opacity:0.88;
+  }
+  .hero::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(180deg, rgba(20,15,10,0.05) 0%, rgba(18,13,9,0.55) 62%, rgba(15,11,8,0.92) 100%);
+  }
+  .hero-inner{
+    position:relative;
+    z-index:2;
+    width:100%;
+    padding:0 24px 40px;
+    max-width:760px;
+    margin:0 auto;
+    color:#f3ead9;
+  }
+  .kicker{
+    font-family:"IBM Plex Mono", monospace;
+    font-size:12px;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:#e3c473;
+    margin:0 0 14px;
+  }
+  .hero h1{
+    font-family:"Fraunces", serif;
+    font-weight:600;
+    font-style:italic;
+    font-size:clamp(46px, 9vw, 84px);
+    line-height:0.98;
+    margin:0 0 18px;
+    letter-spacing:-0.01em;
+  }
+  .hero p{
+    font-size:17px;
+    max-width:520px;
+    color:#e8dfce;
+    margin:0;
+  }
+
+  /* ---------- STAT STRIP ---------- */
+  .stats{
+    background:var(--ink);
+    color:var(--paper-2);
+    font-family:"IBM Plex Mono", monospace;
+  }
+  .stats-inner{
+    max-width:760px;margin:0 auto;padding:20px 24px;
+    display:flex;flex-wrap:wrap;gap:22px 34px;
+    align-items:center;
+  }
+  .stat-label{font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:#a89f8f;display:block;margin-bottom:4px;}
+  .stat-value{font-size:15px;color:var(--paper-2);}
+  .lids{display:flex;gap:6px;align-items:center;}
+  .lid-dot{width:11px;height:11px;border-radius:50%;display:inline-block;}
+
+  /* ---------- SECTIONS ---------- */
+  section{padding:64px 0;}
+  #ingredients{padding-top:34px;}
+  #method{padding-top:46px;}
+  #macros{padding-top:30px;padding-bottom:30px;}
+  #storage{padding-top:40px;}
+  .intro p{
+    font-size:19px;
+    color:var(--ink-soft);
+    max-width:600px;
+  }
+  .intro p+p{margin-top:14px;}
+
+  h2.section-title{
+    font-family:"Fraunces", serif;
+    font-weight:600;
+    font-size:34px;
+    margin:0 0 6px;
+  }
+  .section-sub{
+    font-family:"IBM Plex Mono", monospace;
+    font-size:12px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--amber-deep);
+    margin:0 0 28px;
+  }
+
+  /* ---------- INGREDIENTS ---------- */
+  .ing-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:28px;
+    margin-bottom:36px;
+  }
+  .ing-group h3{
+    font-family:"Work Sans", sans-serif;
+    font-size:14px;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin:0 0 12px;
+    padding-bottom:10px;
+    border-bottom:1px solid var(--rule);
+  }
+  .ing-group ul{list-style:none;margin:0;padding:0;}
+  .ing-group li{
+    padding:7px 0;
+    border-bottom:1px dashed var(--rule);
+    font-size:15px;
+    color:var(--ink-soft);
+  }
+  .ing-group li:last-child{border-bottom:none;}
+  .ing-group li b{color:var(--ink);font-weight:500;}
+
+  .source-photos{
+    display:flex;
+    gap:14px;
+    margin-top:8px;
+  }
+  .source-photos figure{
+    margin:0;
+    flex:1;
+    background:var(--paper-2);
+    border-radius:3px;
+    overflow:hidden;
+  }
+  .source-photos img{aspect-ratio:4/3;object-fit:cover;}
+  .source-photos figcaption{
+    font-family:"IBM Plex Mono", monospace;
+    font-size:11px;
+    color:var(--ink-soft);
+    padding:8px 10px;
+  }
+
+  .equip-block{
+    margin-top:8px;
+    padding-top:24px;
+    border-top:1px solid var(--rule);
+  }
+  .equip-block h3{
+    font-family:"Work Sans", sans-serif;
+    font-size:14px;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin:0 0 14px;
+  }
+  .equip-list{
+    list-style:none;margin:0;padding:0;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:0 32px;
+  }
+  .equip-list li{
+    padding:9px 0;
+    border-bottom:1px dashed var(--rule);
+    font-size:15px;
+    color:var(--ink);
+    font-weight:500;
+  }
+  .equip-list li span{
+    display:block;
+    font-size:13px;
+    font-weight:400;
+    color:var(--ink-soft);
+    margin-top:2px;
+  }
+
+  /* ---------- STEPS ---------- */
+  .step{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:36px;
+    align-items:center;
+    padding:40px 0;
+    border-bottom:1px solid var(--rule);
+  }
+  .step:first-of-type{padding-top:8px;}
+  .step:last-of-type{border-bottom:none;}
+  .step.flip .step-text{order:2;}
+  .step.flip .step-media{order:1;}
+
+  .step-num{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    font-family:"IBM Plex Mono", monospace;
+    font-size:12px;
+    letter-spacing:0.1em;
+    color:var(--ink-soft);
+    margin-bottom:10px;
+  }
+  .step-num .lid-dot{width:20px;height:20px;}
+  .step-text h3{
+    font-family:"Fraunces", serif;
+    font-weight:600;
+    font-size:26px;
+    margin:0 0 10px;
+  }
+  .step-text p{
+    font-size:15.5px;
+    color:var(--ink-soft);
+    margin:0;
+  }
+  .step-media{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+  }
+  .step-media.two-up{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+  }
+  .step-media img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    aspect-ratio:4/3;
+    border-radius:3px;
+  }
+  .step-media.two-up img{aspect-ratio:3/4;}
+  .step-media.stacked{display:flex;flex-direction:column;gap:8px;}
+  .step-media.stacked img{aspect-ratio:4/3;}
+
+  /* ---------- NOTES / STORAGE ---------- */
+  .cards{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+  }
+  .card{
+    background:var(--paper-2);
+    border:1px solid var(--rule);
+    border-radius:4px;
+    padding:22px 24px;
+  }
+  .card h4{
+    font-family:"IBM Plex Mono", monospace;
+    font-size:11px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--amber-deep);
+    margin:0 0 10px;
+  }
+  .card p{margin:0;font-size:15px;color:var(--ink-soft);}
+  .card p+p{margin-top:8px;}
+
+  .macro-grid{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:14px;
+    margin-bottom:20px;
+  }
+  .macro-card{
+    background:var(--paper-2);
+    border:1px solid var(--rule);
+    border-radius:4px;
+    padding:20px 12px;
+    text-align:center;
+  }
+  .macro-value{
+    display:block;
+    font-family:"IBM Plex Mono", monospace;
+    font-size:20px;
+    color:var(--amber-deep);
+    margin-bottom:6px;
+  }
+  .macro-label{
+    display:block;
+    font-family:"IBM Plex Mono", monospace;
+    font-size:10.5px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+  }
+  .macro-note{
+    font-size:14.5px;
+    color:var(--ink-soft);
+    max-width:640px;
+  }
+
+  footer{
+    background:var(--ink);
+    color:#b6ac9b;
+    padding:40px 0 50px;
+    text-align:center;
+    font-family:"IBM Plex Mono", monospace;
+    font-size:12px;
+    letter-spacing:0.04em;
+  }
+  footer .lids{justify-content:center;margin-bottom:14px;}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 720px){
+    .ing-grid{grid-template-columns:1fr;gap:22px;}
+    .step{grid-template-columns:1fr;gap:18px;}
+    .step.flip .step-text{order:1;}
+    .step.flip .step-media{order:2;}
+    .cards{grid-template-columns:1fr;}
+    .source-photos{flex-direction:column;}
+    .equip-list{grid-template-columns:1fr;}
+    .macro-grid{grid-template-columns:1fr 1fr;}
+    .hero{min-height:64vh;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+  }
+
+  :focus-visible{outline:2px solid var(--amber); outline-offset:2px;}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <img src="images/hero.jpg" alt="Jars of finished golden bone broth, unlidded, with a thin fat cap on top">
+  <div class="hero-inner">
+    <p class="kicker">Low-FODMAP &middot; High-Collagen Bone Broth</p>
+    <h1>Golden Hour</h1>
+    <p>Beef bones and chicken feet, roasted and pressure-cooked for hours into a low-calorie, high-protein broth loaded with collagen and minerals &mdash; built for gut health, not just flavor.</p>
+  </div>
+</div>
+
+<div class="stats">
+  <div class="stats-inner">
+    <div>
+      <span class="stat-label">Cost</span>
+      <span class="stat-value">~$15 / batch</span>
+    </div>
+    <div>
+      <span class="stat-label">Prep</span>
+      <span class="stat-value">15 min</span>
+    </div>
+    <div>
+      <span class="stat-label">Cook + Cool</span>
+      <span class="stat-value">~5 hrs</span>
+    </div>
+    <div>
+      <span class="stat-label">Yield</span>
+      <span class="stat-value">
+        5 &times; 500ml
+        <span class="lids" style="display:inline-flex;vertical-align:middle;margin-left:8px;">
+          <span class="lid-dot" style="background:var(--lid-white);"></span>
+          <span class="lid-dot" style="background:var(--lid-blue);"></span>
+          <span class="lid-dot" style="background:var(--lid-yellow);"></span>
+          <span class="lid-dot" style="background:var(--lid-green);"></span>
+          <span class="lid-dot" style="background:var(--lid-lilac);"></span>
+        </span>
+      </span>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <section class="intro">
+    <p>This recipe is built specifically for low-FODMAP, high-collagen bone broth &mdash; no onion, no garlic, easy on a sensitive gut. Beef bones and chicken feet break down over the long pressure-cook into a base that's high in collagen and minerals, low in calories, and rounded out by ginger and a turmeric-pepper pairing that boosts curcumin's anti-inflammatory benefits.</p>
+    <p>Ideal for meal prepping: cheap ingredients (~$15 for five jars), 15 minutes of hands-on prep, and five jars that cover a full week.</p>
+  </section>
+
+  <section id="ingredients">
+    <h2 class="section-title">What Goes In</h2>
+    <p class="section-sub">Low-FODMAP ingredients &middot; makes 5 jars</p>
+
+    <div class="ing-grid">
+      <div class="ing-group">
+        <h3><span class="lid-dot" style="background:var(--lid-white);"></span>The Base</h3>
+        <ul>
+          <li><b>2 lb</b> beef bones</li>
+          <li><b>1 lb</b> chicken feet</li>
+        </ul>
+      </div>
+      <div class="ing-group">
+        <h3><span class="lid-dot" style="background:var(--lid-green);"></span>Aromatics</h3>
+        <ul>
+          <li><b>2&ndash;3</b> carrots</li>
+          <li><b>3&ndash;4</b> celery stalks</li>
+          <li><b>2&ndash;3</b> chive stalks, green parts only</li>
+          <li><b>15g</b> ginger</li>
+          <li><b>10g</b> turmeric</li>
+          <li><b>2&ndash;3</b> bay leaves</li>
+        </ul>
+      </div>
+      <div class="ing-group">
+        <h3><span class="lid-dot" style="background:var(--lid-yellow);"></span>Seasoning</h3>
+        <ul>
+          <li><b>1&ndash;2 tbsp</b> apple cider vinegar</li>
+          <li><b>1 tsp</b> black pepper</li>
+          <li><b>1/4 tsp</b> salt</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="source-photos">
+      <figure>
+        <img src="images/beef_bones.jpg" alt="Package of frozen beef bones from H Mart, labeled sagol" style="object-position: 50% 75%;">
+        <figcaption>Beef bones &mdash; H Mart</figcaption>
+      </figure>
+      <figure>
+        <img src="images/chicken_feet_pkg.jpg" alt="Package of chicken feet from T&T Supermarket">
+        <figcaption>Chicken feet &mdash; T&amp;T</figcaption>
+      </figure>
+    </div>
+
+    <div class="equip-block">
+      <h3><span class="lid-dot" style="background:var(--lid-blue);"></span>Equipment</h3>
+      <ul class="equip-list">
+        <li>Air fryer <span>for roasting the bones</span></li>
+        <li>Electric pressure cooker <span>6qt or larger</span></li>
+        <li>Fine strainer <span>or a strainer-pot combo</span></li>
+        <li>5 &times; 500ml jars <span>for storage</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="method">
+    <h2 class="section-title">How It's Made</h2>
+    <p class="section-sub">Method &middot; 8 steps</p>
+
+    <div class="step">
+      <div class="step-text">
+        <div class="step-num"><span class="lid-dot" style="background:var(--lid-white);"></span>Step 1</div>
+        <h3>Roast the bones</h3>
+        <p>Air-fry the beef bones at 200&deg;C for 20&ndash;30 minutes, until the surface fat renders off &mdash; or roast in the oven at 220&deg;C for 35&ndash;40 minutes instead. Thaw the chicken feet if frozen, and let the bones cool before they go in the pot.</p>
+      </div>
+      <div class="step-media">
+        <img src="images/beef_bones.jpg" alt="Frozen beef bones before roasting" style="object-position: 50% 75%;">
+      </div>
+    </div>
+
+    <div class="step flip">
+      <div class="step-text">
+        <div class="step-num"><span class="lid-dot" style="background:var(--lid-green);"></span>Step 2</div>
+        <h3>Prep the aromatics</h3>
+        <p>Roughly chop the carrots and celery, slice the ginger and turmeric thin, and take the green tops off the chives. Portion out the pepper, salt, and apple cider vinegar so everything's ready to go in one motion once the bones are in.</p>
+      </div>
+      <div class="step-media two-up">
+        <img src="images/veg_raw.jpg" alt="Raw carrots, celery, ginger, and chives on a cutting board">
+        <img src="images/veg_prepped.jpg" alt="Chopped vegetables portioned with vinegar, pepper, and salt">
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-text">
+        <div class="step-num"><span class="lid-dot" style="background:var(--lid-blue);"></span>Step 3</div>
+        <h3>Load the pot</h3>
+        <p>Once the beef bones have cooled, add them to the pressure cooker along with the chicken feet, chopped vegetables, seasoning, and vinegar. Fill with water up to the max fill line.</p>
+      </div>
+      <div class="step-media">
+        <img src="images/pot_loaded.jpg" alt="Pressure cooker pot loaded with bones, chicken feet, and chopped vegetables">
+      </div>
+    </div>
+
+    <div class="step flip">
+      <div class="step-text">
+        <div class="step-num"><span class="lid-dot" style="background:var(--lid-yellow);"></span>Step 4</div>
+        <h3>Pressure cook</h3>
+        <p>Set to high pressure for 3 to 3.5 hours on the Stock/Soup setting. Once time's up, let it come down on its own &mdash; a full natural release, no venting it early.</p>
+      </div>
+      <div class="step-media">
+        <img src="images/pressure_cook.jpg" alt="Electric pressure cooker set to high pressure, stock mode, 3 hours 30 minutes">
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-text">
+        <div class="step-num"><span class="lid-dot" style="background:var(--lid-lilac);"></span>Step 5</div>
+        <h3>Check the color</h3>
+        <p>Once the lid opens, the broth should be a deep amber and the chicken feet nearly translucent. Lift out the inner pot and let it cool for 30&ndash;60 minutes before pouring.</p>
+      </div>
+      <div class="step-media">
+        <img src="images/cooked_open.jpg" alt="Open pressure cooker showing finished amber broth with carrots and chicken feet">
+      </div>
+    </div>
+
+    <div class="step flip">
+      <div class="step-text">
+        <div class="step-num"><span class="lid-dot" style="background:var(--lid-white);"></span>Step 6</div>
+        <h3>Strain</h3>
+        <p>Pour the whole pot through a fine strainer &mdash; a strainer-and-pot combo works well here. Discard or compost what's left behind; it's given up everything it had.</p>
+      </div>
+      <div class="step-media two-up">
+        <img src="images/straining.jpg" alt="Straining cooked broth through a colander into a bowl">
+        <img src="images/strained_bowl.jpg" alt="Bowl of clear strained amber broth">
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-text">
+        <div class="step-num"><span class="lid-dot" style="background:var(--lid-green);"></span>Step 7</div>
+        <h3>Jar it up</h3>
+        <p>Pour the strained broth into your jars, leaving a little headroom at the top &mdash; especially in any you're planning to freeze.</p>
+      </div>
+      <div class="step-media two-up">
+        <img src="images/jars_empty.jpg" alt="Empty jars lined up next to a bowl of strained broth">
+        <img src="images/jars_pouring.jpg" alt="Pouring strained broth into jars through a small strainer">
+      </div>
+    </div>
+
+    <div class="step flip">
+      <div class="step-text">
+        <div class="step-num"><span class="lid-dot" style="background:var(--lid-blue);"></span>Step 8</div>
+        <h3>Cool and store</h3>
+        <p>Let the jars come down to room temperature before sealing and moving them to the fridge. This batch makes five 500ml jars &mdash; enough for a full week.</p>
+      </div>
+      <div class="step-media">
+        <img src="images/jars_sealed.jpg" alt="Five sealed jars of bone broth with colorful lids">
+      </div>
+    </div>
+
+  </section>
+
+  <section id="macros">
+    <h2 class="section-title">Rough Macros</h2>
+    <p class="section-sub">Per 500ml jar &middot; estimated</p>
+
+    <div class="macro-grid">
+      <div class="macro-card">
+        <span class="macro-value">100&ndash;150</span>
+        <span class="macro-label">Calories</span>
+      </div>
+      <div class="macro-card">
+        <span class="macro-value">15&ndash;20g</span>
+        <span class="macro-label">Protein (collagen)</span>
+      </div>
+      <div class="macro-card">
+        <span class="macro-value">3&ndash;7g</span>
+        <span class="macro-label">Fat</span>
+      </div>
+      <div class="macro-card">
+        <span class="macro-value">&lt;1g</span>
+        <span class="macro-label">Carbs</span>
+      </div>
+    </div>
+
+    <p class="macro-note">Every batch will vary a bit. Also rich in minerals from the long cook. If it gells when chilled, that's high collagen &mdash; exactly what you're after.</p>
+  </section>
+
+  <section id="storage">
+    <h2 class="section-title">Keep It</h2>
+    <p class="section-sub">Storage &amp; reheating</p>
+    <div class="cards">
+      <div class="card">
+        <h4>Fridge</h4>
+        <p>Up to 1 week, sealed &mdash; this batch is sized for a full week of meal prep.</p>
+      </div>
+      <div class="card">
+        <h4>Freezer</h4>
+        <p>Several months. Leave extra headroom in any jar going in the freezer &mdash; liquid expands as it freezes.</p>
+      </div>
+      <div class="card">
+        <h4>To serve</h4>
+        <p>Microwave 2&ndash;3 minutes to thaw and warm through. Or thaw in the fridge overnight and heat gently on the stove.</p>
+      </div>
+      <div class="card">
+        <h4>Why no onion or garlic</h4>
+        <p>Built low-FODMAP on purpose. The green tops of the chives carry the aromatic lift that onion usually would, backed up by ginger and turmeric.</p>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="lids">
+    <span class="lid-dot" style="background:var(--lid-white);"></span>
+    <span class="lid-dot" style="background:var(--lid-blue);"></span>
+    <span class="lid-dot" style="background:var(--lid-yellow);"></span>
+    <span class="lid-dot" style="background:var(--lid-green);"></span>
+    <span class="lid-dot" style="background:var(--lid-lilac);"></span>
+  </div>
+  GOLDEN HOUR BONE BROTH &middot; MAKES 5 &times; 500ML
+</footer>
+
+</body>
+</html>
